@@ -15,3 +15,15 @@ class IpAddress
     @bytes = bytes
   end
 end
+
+def concatenate_bytes(array)
+  return 0 if array.empty?
+  
+  shift_amount = (array.length * 8) - 8
+
+  array.each.inject(0) do |result, byte|
+    result |= (byte << shift_amount)
+    shift_amount -= 8
+    result
+  end
+end
