@@ -1,5 +1,3 @@
-
-
 def bool_to_bit(value)
   case value
   when true then 1
@@ -17,4 +15,3 @@ class IpAddress
     @bytes = bytes
   end
 end
-

@@ -1,4 +1,3 @@
-
 require_relative 'util'
 
 # A raw DNS packet
@@ -69,4 +68,3 @@ module Packet
     end
   end
 end
-

@@ -1,4 +1,3 @@
-
 class Name
 
   # The parts that make up the name.
@@ -15,7 +14,7 @@ class Name
   end
 
   private
-  
+
   def calculate_parts(domain)
     domain.split(".")
   end
