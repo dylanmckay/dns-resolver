@@ -1,16 +1,9 @@
 
+require_relative 'util'
+
 # A raw DNS packet
-#
 
 module Packet
-
-  def bool_to_bit(value)
-    case value
-    when true then 1
-    when false then 0
-    when 1 | 0 then value
-    end
-  end
 
   class Header
 
