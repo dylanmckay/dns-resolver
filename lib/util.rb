@@ -74,5 +74,5 @@ def value_to_bytes(value)
     position += 8
   end
 
-  result.reverse
+  result
 end

@@ -88,7 +88,7 @@ describe "get_bit_from_byte" do
     context "when converting 256" do
       subject { value_to_bytes(256) }
 
-      it { is_expected.to eq [1,0] }
+      it { is_expected.to eq [0,1] }
     end
 
     context "when converting 0" do
