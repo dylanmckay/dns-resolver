@@ -77,4 +77,30 @@ describe "get_bit_from_byte" do
       it { is_expected.to eq [1,1,0,0,1,1,0,0] }
     end
   end
+
+  describe "value_to_bytes" do
+    context "when converting 255" do
+      subject { value_to_bytes(255) }
+
+      it { is_expected.to eq [255] }
+    end
+
+    context "when converting 256" do
+      subject { value_to_bytes(256) }
+
+      it { is_expected.to eq [1,0] }
+    end
+
+    context "when converting 0" do
+      subject { value_to_bytes(0) }
+
+      it { is_expected.to eq [0] }
+    end
+
+    context "when converting 65535" do
+      subject { value_to_bytes(65535) }
+
+      it { is_expected.to eq [0xff,0xff] }
+    end
+  end
 end

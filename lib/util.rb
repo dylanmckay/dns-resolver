@@ -53,3 +53,26 @@ def byte_to_bits(byte)
     [bit] + bits
   end
 end
+
+def value_to_bytes(value)
+  position = 0
+  result = []
+
+  if value == 0
+    return [0]
+  end
+
+  while value != 0
+    mask = 0xff << position
+
+    masked_value = value & mask
+    separated_value = masked_value >> position
+    result << separated_value
+
+    value &= ~masked_value
+
+    position += 8
+  end
+
+  result.reverse
+end
