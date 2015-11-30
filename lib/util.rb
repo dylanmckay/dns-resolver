@@ -16,14 +16,40 @@ class IpAddress
   end
 end
 
+def concatenate_bits(bits)
+  bits.each.with_index.inject(0) do |result,bit_and_index|
+    bit = bit_and_index[0]
+    index = bit_and_index[1]
+
+    shift_amount = bits.length - index - 1
+    result | (bit << shift_amount)
+  end
+end
+
 def concatenate_bytes(array)
   return 0 if array.empty?
-  
+
   shift_amount = (array.length * 8) - 8
 
   array.each.inject(0) do |result, byte|
     result |= (byte << shift_amount)
     shift_amount -= 8
     result
+  end
+end
+
+def get_bit_from_byte(byte, position)
+  masked_out = byte & (1 << position)
+  masked_out >> position
+end
+
+def bit_array(bytes)
+  bytes.map { |byte| byte_to_bits(byte) }.flatten
+end
+
+def byte_to_bits(byte)
+  (0...8).each.inject([]) do |bits, n|
+    bit = get_bit_from_byte(byte, n)
+    [bit] + bits
   end
 end
